@@ -1,9 +1,11 @@
-<script setup lang="ts">
 
-</script>
 
 <template>
   <main>
     home
+    <MyTest></MyTest>
   </main>
 </template>
+<script setup lang="ts">
+import {MyTest} from "@/components";
+</script>
