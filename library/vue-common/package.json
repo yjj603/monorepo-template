@@ -1,5 +1,5 @@
 {
-  "name": "@malaka/core",
+  "name": "@malaka/vue-common",
   "version": "1.0.0",
   "scripts": {
     "common:dev": "vite",
