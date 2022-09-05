@@ -1,3 +1,3 @@
 export * from './src'
-export * from './src/utils'
+export * from '../utils-common/time'
 export * from './src/components'
