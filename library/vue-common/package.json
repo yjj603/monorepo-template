@@ -14,7 +14,10 @@
   },
   "main": "index.ts",
   "dependencies": {
+    "@malaka/utils-common": "workspace:^1.0.0",
+    "axios": "^0.27.2",
     "element-plus": "^2.2.16",
+    "nprogress": "^0.2.0",
     "pinia": "^2.0.21",
     "vue": "^3.2.38",
     "vue-global-api": "^0.4.1",
@@ -24,6 +27,7 @@
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/jsdom": "^20.0.0",
     "@types/node": "^16.11.56",
+    "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "@vue/eslint-config-prettier": "^7.0.0",
