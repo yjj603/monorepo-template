@@ -7,9 +7,9 @@ import { ValidationPipe } from '@nestjs/common';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
-import {generateDocument} from './common/swagger';
+import { generateDocument } from './common/swagger';
 
-export async function bootstrap(module:any){
+export async function bootstrap(module: any) {
   const app = await NestFactory.create<NestFastifyApplication>(
     module,
     new FastifyAdapter({

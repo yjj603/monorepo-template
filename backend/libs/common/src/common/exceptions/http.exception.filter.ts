@@ -18,7 +18,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     // 处理业务异常
     if (exception instanceof BusinessException) {
-      const error:any = exception.getResponse();
+      const error: any = exception.getResponse();
       response.status(HttpStatus.OK).send({
         data: null,
         status: error.code,

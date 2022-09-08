@@ -1,9 +1,9 @@
-import {CacheModule} from '@nestjs/common';
-import {ConfigModule} from '@nestjs/config';
-import {DatabaseModule} from './common/database/database.module';
-import {getConfig} from './utils';
+import { CacheModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from './common/database/database.module';
+import { getConfig } from './utils';
 
-export const AppCommonModule =(entities:any)=> [
+export const AppCommonModule = (entities: any) => [
   DatabaseModule.register(entities),
   CacheModule.register({
     isGlobal: true,
@@ -13,4 +13,4 @@ export const AppCommonModule =(entities:any)=> [
     isGlobal: true,
     load: [getConfig],
   }),
-]
+];
