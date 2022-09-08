@@ -1,0 +1,9 @@
+TEST_VALUE:
+  name: cookie
+DATA_BASE:
+  dialect: 'mysql'
+  host: '39.105.189.94'
+  port: 3307
+  username: 'root'
+  password: '123456'
+  database: 'r2dbc'
