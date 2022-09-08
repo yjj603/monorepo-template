@@ -6,7 +6,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {MyTest} from "@malaka/vue-common";
+import {MyTest} from "../../../vue-common";
 
 </script>
 <style>

@@ -1,4 +1,4 @@
-import {createVue} from '@malaka/vue-common'
+import {createVue} from '../../vue-common'
 import App from './App.vue'
 import router from './router'
 
