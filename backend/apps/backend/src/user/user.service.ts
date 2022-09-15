@@ -1,7 +1,7 @@
 import { Injectable, HttpException,HttpStatus } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User, Role,User_Role } from '../entities';
+import { User } from '../entities';
 import {UserDao} from './user.dao';
 
 @Injectable()
@@ -32,10 +32,6 @@ export class UserService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    return null
-  }
-
-  async remove(id: number) {
-    return null
+    return this.userDao.update(id,updateUserDto)
   }
 }

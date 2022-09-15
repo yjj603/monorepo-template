@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import {User,User_Role,Role} from '../entities';
 import {Op} from 'sequelize'
 import { CreateUserDto } from './dto/create-user.dto';
+import {UpdateUserDto} from './dto/update-user.dto';
 
 @Injectable()
 export class UserDao {
@@ -21,19 +22,26 @@ export class UserDao {
     return await User_Role.bulkCreate(createUserRole)
   }
   async findOne(key,value){
-    const res =  await User.findOne({
+    return  await User.findOne({
       where:{
         [key]:{
           [Op.eq]:value
         },
-        // include:Role
       },
+      include:Role
     })
-    return res
+
   }
   async findALl(){
     return await User.findAll({
       include:Role
+    })
+  }
+  async update(id:number,updateUserDto:UpdateUserDto){
+    return await User.update(updateUserDto,{
+      where:{
+        id
+      }
     })
   }
 }

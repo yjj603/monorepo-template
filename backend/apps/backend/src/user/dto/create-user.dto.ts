@@ -10,8 +10,11 @@ export class CreateUserDto {
   @IsNotEmpty({message:"请输入密码"})
   password: string;
 
+  @ApiProperty({ description: '状态' })
+  status:number
+
   @ApiProperty({ description: '用户权限',type:[Number] })
-  role?:number[]
+  role:number[]
 }
 
 export class LoginDto extends OmitType(CreateUserDto,['role'] as const){}

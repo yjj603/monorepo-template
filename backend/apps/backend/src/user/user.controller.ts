@@ -15,9 +15,9 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiOperation, ApiResponse, ApiTags,ApiBearerAuth } from '@nestjs/swagger';
 import {AuthGuard} from '@nestjs/passport';
+import {Roles,RolesGuard} from '../auth/role.guard';
 
-
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'),RolesGuard)
 @ApiTags('用户数据')
 @Controller('api/user')
 @ApiBearerAuth()
@@ -40,16 +40,19 @@ export class UserController {
     return this.userService.findOne('id',id);
   }
 
-
+  @Roles('update')
   @ApiOperation({ summary: '根据id更新数据' })
   @Patch('update/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);
   }
 
+  @Roles('remove')
   @ApiOperation({ summary: '根据id删除数据' })
   @Delete('delete/:id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
+  remove(@Param('id',ParseIntPipe) id: number) {
+    return this.userService.update(id,{
+      status:0
+    });
   }
 }

@@ -19,9 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(user:User) {
-    console.log('jwt',user);
     const existUser = await this.userService.findOne('id',user.id)
-    console.log('jwt',existUser);
     if (!existUser) {
       throw new UnauthorizedException('token不正确');
     }
