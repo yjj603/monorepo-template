@@ -11,6 +11,7 @@ import { User, Role } from '../index';
 
 @Table({
   freezeTableName: true,
+  underscored: true,
   tableName: 'User_Role',
   timestamps: false,
 })
@@ -23,9 +24,9 @@ export class User_Role extends Model {
 
   @ForeignKey(() => User)
   @Column
-  user_id: number;
+  userId!: number;
 
   @ForeignKey(() => Role)
   @Column
-  role_id: number;
+  roleId!: number;
 }

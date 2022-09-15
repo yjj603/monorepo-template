@@ -24,20 +24,15 @@ export class User extends Model {
   @Column
   id!: number;
 
-  @Column({
-    type: DataType.STRING,
-  })
-  firstName: string;
+  @Column
+  username!: string;
 
   @Column
-  lastName: string;
+  password!:string
 
-  @Default(true)
+  @Default(1)
   @Column
-  isActive: boolean;
-
-  @Column
-  age: number;
+  status: number;
 
   @BelongsToMany(() => Role, () => User_Role)
   role: Role[];
