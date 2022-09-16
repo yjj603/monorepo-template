@@ -1,5 +1,6 @@
 ENV:
   name: dev
+  port: 4001
 DATA_BASE:
   dialect: 'mysql'
   host: '39.105.189.94'

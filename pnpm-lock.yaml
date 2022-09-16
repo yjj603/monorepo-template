@@ -36,8 +36,9 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.36.2
       '@typescript-eslint/parser': ^5.36.2
       assert: ^2.0.0
+      bcryptjs: ^2.4.3
       cache-manager: ^4.1.0
-      chalk: 4.1.2
+      chalk: ^4.1.2
       class-transformer: ^0.5.1
       class-validator: ^0.13.2
       dayjs: ^1.11.5
@@ -82,6 +83,7 @@ importers:
       '@nestjs/schedule': 2.1.0_fvppslgepxggj3fnmtlnh4cori
       '@nestjs/swagger': 6.1.2_mafirdz2v2yiqi5vgldmeyydne
       assert: 2.0.0
+      bcryptjs: 2.4.3
       cache-manager: 4.1.0
       chalk: 4.1.2
       class-transformer: 0.5.1
@@ -3063,6 +3065,10 @@ packages:
     dependencies:
       tweetnacl: 0.14.5
     dev: true
+
+  /bcryptjs/2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
+    dev: false
 
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}

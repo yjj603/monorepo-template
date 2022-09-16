@@ -10,7 +10,7 @@ import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
 import { generateDocument } from './common/swagger';
 import {fastify} from 'fastify'
 import { FastifyLogger } from './logger';
-import {isDev} from '@malaka/common/utils';
+import { getPort } from '@malaka/common/utils';
 export async function bootstrap(module: any) {
 /*  const fastifyInstance = fastify({
     logger: FastifyLogger,
@@ -34,10 +34,10 @@ export async function bootstrap(module: any) {
   // 全局字段校验结束
 
   //全局异常拦截开始
-  // app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
+  app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
   //全局异常拦截结束
 
-  //全局拦截器开始
+  //全局接口返回值拦截器开始
   app.useGlobalInterceptors(new TransformInterceptor());
   //全局拦截器结束
 
@@ -45,5 +45,5 @@ export async function bootstrap(module: any) {
   generateDocument(app);
   //swagger结束
 
-  await app.listen(3000);
+  await app.listen(getPort());
 }

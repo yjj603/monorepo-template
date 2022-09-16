@@ -8,8 +8,12 @@ import {
   PrimaryKey,
   Table,
   Unique,
+  BeforeCreate,
+  BeforeUpdate
 } from 'sequelize-typescript';
 import { Role, User_Role } from '../index';
+import * as bcrypt from 'bcryptjs'
+import {Exclude} from 'class-transformer';
 
 @Table({
   freezeTableName: true,
@@ -22,13 +26,15 @@ export class User extends Model {
   @AutoIncrement
   @Unique
   @Column
-  id!: number;
+  id: number;
 
   @Column
-  username!: string;
+  username: string;
+
 
   @Column
-  password!:string
+  // @Exclude()
+  password:string
 
   @Default(1)
   @Column
@@ -36,4 +42,11 @@ export class User extends Model {
 
   @BelongsToMany(() => Role, () => User_Role)
   role: Role[];
+
+  @BeforeUpdate
+  // @BeforeCreate
+  static async encryptPwd(instance:User){
+    console.log('update');
+    instance.password = await bcrypt.hashSync(instance.password)
+  }
 }

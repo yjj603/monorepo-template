@@ -1,7 +1,6 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Patch,
   Param,
@@ -9,9 +8,10 @@ import {
   // Version,
   ParseIntPipe,
   UseGuards,
+  UseInterceptors,
+  ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiOperation, ApiResponse, ApiTags,ApiBearerAuth } from '@nestjs/swagger';
 import {AuthGuard} from '@nestjs/passport';
@@ -21,6 +21,7 @@ import {Roles,RolesGuard} from '../auth/role.guard';
 @ApiTags('用户数据')
 @Controller('api/user')
 @ApiBearerAuth()
+// @UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(
     private readonly userService: UserService,
@@ -28,12 +29,13 @@ export class UserController {
 
   @ApiOperation({ summary: '查询所有数据' })
   @Get('findALl')
-  @ApiResponse({type:CreateUserDto})
+  @ApiResponse({type:UpdateUserDto})
   // @Version('1')
   findAll() {
     return this.userService.findAll();
   }
 
+  @ApiResponse({type:UpdateUserDto})
   @ApiOperation({ summary: '根据id查询数据' })
   @Get('find/:id')
   findOne(@Param('id',ParseIntPipe) id: number) {
@@ -43,8 +45,8 @@ export class UserController {
   @Roles('update')
   @ApiOperation({ summary: '根据id更新数据' })
   @Patch('update/:id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+  update(@Param('id',ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(id, updateUserDto);
   }
 
   @Roles('remove')

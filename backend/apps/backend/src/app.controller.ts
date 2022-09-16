@@ -1,4 +1,13 @@
-import { Controller, Body, Post, UseGuards, Req, Get } from '@nestjs/common';
+import {
+  Controller,
+  Body,
+  Post,
+  UseGuards,
+  Req,
+  Get,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
 import { ApiOperation } from '@nestjs/swagger';
@@ -7,6 +16,7 @@ import {UserService} from './user/user.service';
 import { ConfigService } from '@nestjs/config';
 
 @Controller()
+// @UseInterceptors(ClassSerializerInterceptor)
 export class AppController {
   constructor(
     private readonly authService: AuthService,

@@ -18,3 +18,8 @@ export const getConfig = () => {
 export const isDev = ():boolean=>{
   return getEnv() === 'dev'
 }
+
+export const getPort = ():number =>{
+  const config = getConfig()
+  return config.ENV.port
+}

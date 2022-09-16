@@ -26,7 +26,6 @@ export class RolesGuard implements CanActivate {
       return false;
     }
     const role = user.role.map(v=>v.name)
-    console.log(role,roles);
     const hasRoles = roles.some((r) => role.includes(r));
     if (!hasRoles) {
       throw new UnauthorizedException('您没有权限');
