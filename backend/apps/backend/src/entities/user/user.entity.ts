@@ -7,6 +7,8 @@ import {
   PrimaryGeneratedColumn,
   JoinTable,
   ManyToMany,
+  BeforeInsert,
+  BeforeUpdate,
 } from 'typeorm';
 
 @Entity()
@@ -14,14 +16,18 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ length: 100 })
   username: string;
 
   @Column()
   @Exclude()
   password: string;
 
-  @Column({ default: 1 })
+  @Column({
+    type: 'enum',
+    enum: [0, 1],
+    default: 1,
+  })
   status: number;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
@@ -34,10 +40,9 @@ export class User {
   @JoinTable()
   role: Role[];
 
-  // @BeforeUpdate
-  // @BeforeCreate
-  static async encryptPwd(instance: User) {
-    console.log('update');
-    instance.password = await bcrypt.hashSync(instance.password);
+  @BeforeInsert()
+  @BeforeUpdate()
+  async encryptPwd() {
+    this.password = await bcrypt.hashSync(this.password, 10);
   }
 }

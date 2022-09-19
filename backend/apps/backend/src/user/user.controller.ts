@@ -6,13 +6,13 @@ import {
   Param,
   Delete,
   // Version,
-  ParseIntPipe,
   UseGuards,
   UseInterceptors,
   ClassSerializerInterceptor,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { FindUserDto, UpdateUserDto } from './dto/update-user.dto';
 import {
   ApiOperation,
   ApiResponse,
@@ -21,12 +21,13 @@ import {
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { Roles, RolesGuard } from '../auth/role.guard';
+import { PageNation } from '@malaka/common';
 
 @UseGuards(AuthGuard('jwt'), RolesGuard)
 @ApiTags('用户数据')
 @Controller('api/user')
 @ApiBearerAuth()
-// @UseInterceptors(ClassSerializerInterceptor)
+@UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -34,31 +35,28 @@ export class UserController {
   @Get('findALl')
   @ApiResponse({ type: UpdateUserDto })
   // @Version('1')
-  findAll() {
-    return this.userService.findAll();
+  findAll(@Query() findUserDto: FindUserDto) {
+    return this.userService.findAll(findUserDto);
   }
 
   @ApiResponse({ type: UpdateUserDto })
   @ApiOperation({ summary: '根据id查询数据' })
   @Get('find/:id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
+  findOne(@Param('id') id: string) {
     return this.userService.findOne('id', id);
   }
 
   @Roles('update')
   @ApiOperation({ summary: '根据id更新数据' })
   @Patch('update/:id')
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updateUserDto: UpdateUserDto,
-  ) {
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
 
   @Roles('remove')
   @ApiOperation({ summary: '根据id删除数据' })
   @Delete('delete/:id')
-  remove(@Param('id', ParseIntPipe) id: number) {
+  remove(@Param('id') id: string) {
     return this.userService.update(id, {
       status: 0,
     });

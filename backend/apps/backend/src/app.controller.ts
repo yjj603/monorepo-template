@@ -11,12 +11,16 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth/auth.service';
 import { ApiOperation } from '@nestjs/swagger';
-import { CreateUserDto, LoginDto } from './user/dto/create-user.dto';
+import {
+  CreateRoleDto,
+  CreateUserDto,
+  LoginDto,
+} from './user/dto/create-user.dto';
 import { UserService } from './user/user.service';
 import { ConfigService } from '@nestjs/config';
 
 @Controller()
-// @UseInterceptors(ClassSerializerInterceptor)
+@UseInterceptors(ClassSerializerInterceptor)
 export class AppController {
   constructor(
     private readonly authService: AuthService,
@@ -24,9 +28,15 @@ export class AppController {
     private readonly configService: ConfigService,
   ) {}
 
+  @ApiOperation({ summary: '添加权限' })
+  @Post('role')
+  async createRole(@Body() req: CreateRoleDto) {
+    return this.userService.createRole(req);
+  }
+
   @ApiOperation({ summary: '注册用户' })
   @Post('register')
-  async register(@Body() req: CreateUserDto) {
+  async register(@Body() req: CreateUserDto<string>) {
     return this.userService.register(req);
   }
 

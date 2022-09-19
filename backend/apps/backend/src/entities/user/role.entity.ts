@@ -12,10 +12,9 @@ export class Role {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ length: 50 })
   name: string;
 
   @ManyToMany(() => User, (user) => user.role)
-  @JoinTable()
   user: User[];
 }

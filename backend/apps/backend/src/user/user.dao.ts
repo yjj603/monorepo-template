@@ -1,52 +1,50 @@
 import { Injectable } from '@nestjs/common';
 import { User, Role } from '../entities';
-import { CreateUserDto, LoginDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { Repository } from 'typeorm';
+import { CreateRoleDto, CreateUserDto } from './dto/create-user.dto';
+import { FindUserDto, UpdateUserDto } from './dto/update-user.dto';
+import { Repository, In } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UserDao {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(Role) private roleRepository: Repository<Role>,
   ) {}
-  async findOneOrCreateByUsername(createUserDto: CreateUserDto) {
-    /*return  await User.findOrCreate({
-      where:{
-        username:{
-          [Op.eq]:createUserDto.username
-        }
-      },
-      defaults:{...createUserDto}
-    })*/
-    return null;
-  }
-  async BulkCreateUserRole(createUserRole: any[]) {
-    // return await User_Role.bulkCreate(createUserRole)
-    return null;
+
+  async createRole(createRoleDto: CreateRoleDto) {
+    return this.roleRepository.save(createRoleDto);
   }
 
-  async create(createUserDto: LoginDto) {
-    return this.userRepository.save(createUserDto);
+  async findRole(ids: string[]) {
+    return this.roleRepository.findBy({
+      id: In(ids),
+    });
+  }
+
+  async create(createUserDto: CreateUserDto<Role>) {
+    const create = this.userRepository.create(createUserDto);
+    return this.userRepository.save(create);
   }
 
   async findOne(key, value) {
-    return this.userRepository.findOneBy({
-      [key]: value,
+    return this.userRepository.findOne({
+      where: {
+        [key]: value,
+      },
+      relations: ['role'],
     });
   }
-  async findALl() {
-    /*return await User.findAll({
-      include:Role
-    })*/
-    return null;
+  async findALl(findUserDto: FindUserDto) {
+    return await this.userRepository.findAndCount({
+      relations: ['role'],
+      skip: findUserDto.page,
+      take: findUserDto.size,
+    });
   }
-  async update(id: number, updateUserDto: UpdateUserDto) {
-    /*return await User.update(updateUserDto,{
-      where:{
-        id
-      }
-    })*/
-    return null;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    const findOne = await this.findOne('id', id);
+    const update = this.userRepository.merge(findOne, updateUserDto);
+    return this.userRepository.save(update);
   }
 }

@@ -13,7 +13,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     } as IStrategyOptions);
   }
 
-  async validate(username: string, password: string): Promise<any> {
+  async validate(username: string, password: string) {
     const user = await this.userService.findOne('username', username);
     if (!user) {
       throw new BadRequestException('用户名不正确！');
