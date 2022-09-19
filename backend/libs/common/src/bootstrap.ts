@@ -48,4 +48,9 @@ export async function bootstrap(module: any) {
   //swagger结束
 
   await app.listen(getPort());
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
 }

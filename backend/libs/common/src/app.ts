@@ -18,6 +18,8 @@ export const AppCommonModule = () => [
       timezone: '+08:00',
       synchronize: true,
       autoLoadEntities: true,
+      logging: ['error'],
+      maxQueryExecutionTime: 1000,
     }),
   }),
   CacheModule.register({
