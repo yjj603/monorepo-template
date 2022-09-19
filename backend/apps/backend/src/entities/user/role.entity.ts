@@ -1,30 +1,21 @@
+import { User } from '../index';
 import {
-  AutoIncrement,
-  BelongsToMany,
+  Entity,
   Column,
-  Model,
-  PrimaryKey,
-  Table,
-  Unique,
-} from 'sequelize-typescript';
-import { User, User_Role } from '../index';
+  PrimaryGeneratedColumn,
+  JoinTable,
+  ManyToMany,
+} from 'typeorm';
 
-@Table({
-  freezeTableName: true,
-  underscored: true,
-  tableName: 'Role',
-  timestamps: false,
-})
-export class Role extends Model {
-  @PrimaryKey
-  @AutoIncrement
-  @Unique
-  @Column
-  id!: number;
+@Entity()
+export class Role {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  @Column
-  name!: string;
+  @Column()
+  name: string;
 
-  @BelongsToMany(() => User, () => User_Role)
+  @ManyToMany(() => User, (user) => user.role)
+  @JoinTable()
   user: User[];
 }

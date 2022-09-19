@@ -1,18 +1,27 @@
 import { CacheModule } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { DatabaseModule } from './common/database/database.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getConfig } from './utils';
 import { ScheduleModule } from '@nestjs/schedule';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
-export const AppCommonModule = (entities: any) => [
-  DatabaseModule.register(entities),
-  CacheModule.register({
-    isGlobal: true,
-  }),
+export const AppCommonModule = () => [
   ConfigModule.forRoot({
     ignoreEnvFile: true,
     isGlobal: true,
     load: [getConfig],
   }),
-  ScheduleModule.forRoot()
+  TypeOrmModule.forRootAsync({
+    imports: [ConfigModule],
+    inject: [ConfigService],
+    useFactory: async (configService: ConfigService) => ({
+      ...configService.get('DATA_BASE'),
+      timezone: '+08:00',
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
+  }),
+  CacheModule.register({
+    isGlobal: true,
+  }),
+  ScheduleModule.forRoot(),
 ];

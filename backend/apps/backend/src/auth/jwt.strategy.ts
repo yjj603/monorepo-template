@@ -4,13 +4,11 @@ import { Injectable } from '@nestjs/common';
 import { jwtConstants } from './constants';
 import { User } from '../entities';
 import { UserService } from '../user/user.service';
-import {UnauthorizedException} from '@nestjs/common';
+import { UnauthorizedException } from '@nestjs/common';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(
-    private readonly userService:UserService
-  ) {
+  constructor(private readonly userService: UserService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       // ignoreExpiration: false,
@@ -18,11 +16,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(user:User) {
-    const existUser = await this.userService.findOne('id',user.id)
+  async validate(user: User) {
+    const existUser = await this.userService.findOne('id', user.id);
     if (!existUser) {
       throw new UnauthorizedException('token不正确');
     }
-    return existUser
+    return existUser;
   }
 }

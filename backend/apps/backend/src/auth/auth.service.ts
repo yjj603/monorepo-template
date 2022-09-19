@@ -6,19 +6,19 @@ import { User } from '../entities';
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly userService:UserService,
-    private readonly jwtService:JwtService
+    private readonly userService: UserService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async login(user: Partial<User>) {
     const payload = {
-      id:user.id,
-      username:user.username,
-      role:user.role.map(v=>v.name)
+      id: user.id,
+      username: user.username,
+      role: user.role.map((v) => v.name),
     };
     return {
       token: this.jwtService.sign(payload),
-      user
+      user,
     };
   }
 }

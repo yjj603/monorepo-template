@@ -2,7 +2,7 @@ ENV:
   name: dev
   port: 4001
 DATA_BASE:
-  dialect: 'mysql'
+  type: 'mysql'
   host: '39.105.189.94'
   port: 3307
   username: 'root'

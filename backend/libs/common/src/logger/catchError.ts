@@ -5,6 +5,6 @@
 
 export const catchError = () => {
   process.on('unhandledRejection', (reason, p) => {
-    console.log('Promise: ', p, 'Reason: ', reason)
-  })
-}
+    console.log('Promise: ', p, 'Reason: ', reason);
+  });
+};

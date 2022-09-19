@@ -1,9 +1,9 @@
 import { parse } from 'yaml';
-const path = require('path')
-const fs = require('fs') ;
+const path = require('path');
+const fs = require('fs');
 
 // 获取项目运行环境
-export const getEnv = ():string => {
+export const getEnv = (): string => {
   return process.env.RUNNING_ENV;
 };
 
@@ -15,11 +15,11 @@ export const getConfig = () => {
   return parse(file);
 };
 
-export const isDev = ():boolean=>{
-  return getEnv() === 'dev'
-}
+export const isDev = (): boolean => {
+  return getEnv() === 'dev';
+};
 
-export const getPort = ():number =>{
-  const config = getConfig()
-  return config.ENV.port
-}
+export const getPort = (): number => {
+  const config = getConfig();
+  return config.ENV.port;
+};

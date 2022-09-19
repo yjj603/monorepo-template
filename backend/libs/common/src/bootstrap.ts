@@ -8,29 +8,31 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
 import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
 import { generateDocument } from './common/swagger';
-import {fastify} from 'fastify'
-import { FastifyLogger } from './logger';
+/*import { fastify } from 'fastify';
+import { FastifyLogger } from './logger';*/
 import { getPort } from '@malaka/common/utils';
 export async function bootstrap(module: any) {
-/*  const fastifyInstance = fastify({
+  /*  const fastifyInstance = fastify({
     logger: FastifyLogger,
   })
   console.log(fastifyInstance);*/
   const app = await NestFactory.create<NestFastifyApplication>(
     module,
     new FastifyAdapter({
-      logger:true
+      logger: true,
     }),
     {
       // logger:isDev()?['warn','error']:['error']
-    }
+    },
   );
 
   // 全局字段校验开始 启动全局字段校验，保证请求接口字段校验正确。
-  app.useGlobalPipes(new ValidationPipe({
-    transform:true,
-    forbidUnknownValues:true
-  }));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      forbidUnknownValues: true,
+    }),
+  );
   // 全局字段校验结束
 
   //全局异常拦截开始

@@ -3,10 +3,10 @@
  * @Description: 日志基础类，包含控制台打印
  */
 
-const chalk = require('chalk')
-const dayjs = require('dayjs')
-const split = require('split2')
-const JSONparse = require('fast-json-parse')
+const chalk = require('chalk');
+const dayjs = require('dayjs');
+const split = require('split2');
+const JSONparse = require('fast-json-parse');
 
 const levels = {
   [60]: 'Fatal',
@@ -14,7 +14,7 @@ const levels = {
   [40]: 'Warn',
   [30]: 'Info',
   [20]: 'Debug',
-  [10]: 'Trace'
+  [10]: 'Trace',
 };
 
 const colors = {
@@ -23,11 +23,11 @@ const colors = {
   [40]: 'yellow',
   [30]: 'blue',
   [20]: 'white',
-  [10]: 'white'
-}
+  [10]: 'white',
+};
 
 interface ILogStream {
-  format?: () => void
+  format?: () => void;
 }
 
 export class LogStream {
@@ -40,15 +40,15 @@ export class LogStream {
     });
 
     if (opt?.format && typeof opt.format === 'function') {
-      this.customFormat = opt.format
+      this.customFormat = opt.format;
     }
   }
 
   log(data) {
-    data = this.jsonParse(data)
-    const level = data.level
-    data = this.format(data)
-    console.log(chalk[colors[level]](data))
+    data = this.jsonParse(data);
+    const level = data.level;
+    data = this.format(data);
+    console.log(chalk[colors[level]](data));
   }
 
   jsonParse(data) {
@@ -56,9 +56,8 @@ export class LogStream {
   }
 
   format(data) {
-
     if (this.customFormat) {
-      return this.customFormat(data)
+      return this.customFormat(data);
     }
 
     const Level = levels[data.level];
@@ -68,18 +67,21 @@ export class LogStream {
     let reqInfo = '[-]';
 
     if (data.req) {
-      reqInfo = `[${data.req.remoteAddress || ""} - ${data.req.method} - ${data.req.url}]`
+      reqInfo = `[${data.req.remoteAddress || ''} - ${data.req.method} - ${
+        data.req.url
+      }]`;
     }
 
     if (data.res) {
-      reqInfo = JSON.stringify(data.res)
+      reqInfo = JSON.stringify(data.res);
     }
 
     // 过滤 swagger 日志
     if (data?.req?.url && data?.req?.url.indexOf('/api/doc') !== -1) {
-      return null
+      return null;
     }
-    return `${Level} | ${DateTime} | ${logId} | ${reqInfo} | ${data.stack || data.msg}`
+    return `${Level} | ${DateTime} | ${logId} | ${reqInfo} | ${
+      data.stack || data.msg
+    }`;
   }
-
 }

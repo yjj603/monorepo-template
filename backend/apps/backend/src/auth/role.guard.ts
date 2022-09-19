@@ -11,9 +11,7 @@ export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
 
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(
-    private readonly reflector: Reflector,
-  ) {}
+  constructor(private readonly reflector: Reflector) {}
 
   canActivate(context: ExecutionContext): boolean {
     const roles = this.reflector.get('roles', context.getHandler());
@@ -25,7 +23,7 @@ export class RolesGuard implements CanActivate {
     if (!user) {
       return false;
     }
-    const role = user.role.map(v=>v.name)
+    const role = user.role.map((v) => v.name);
     const hasRoles = roles.some((r) => role.includes(r));
     if (!hasRoles) {
       throw new UnauthorizedException('您没有权限');

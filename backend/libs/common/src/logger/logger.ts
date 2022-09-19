@@ -3,7 +3,7 @@
  * @Description: 日志初始化类
  */
 
-import { join } from 'path'
+import { join } from 'path';
 import { FileStream } from './fileStream';
 import { LogStream } from './logStream';
 
@@ -28,17 +28,21 @@ function asReqValue(req) {
     remoteAddress: req.connection ? req.connection.remoteAddress : '',
     remotePort: req.connection ? req.connection.remotePort : '',
     device_id,
-    tt_webid
+    tt_webid,
   };
-};
+}
 
 const reqIdGenFactory = () => {
-  let maxInt = 2147483647
-  let nextReqId = 0
+  const maxInt = 2147483647;
+  let nextReqId = 0;
   return (req) => {
-    return req.headers['X-TT-logId'] || req.headers['x-tt-logId'] || (nextReqId = (nextReqId + 1) & maxInt)
-  }
-}
+    return (
+      req.headers['X-TT-logId'] ||
+      req.headers['x-tt-logId'] ||
+      (nextReqId = (nextReqId + 1) & maxInt)
+    );
+  };
+};
 
 export const fastLogger = (opt) => {
   const reOpt = {
@@ -47,28 +51,29 @@ export const fastLogger = (opt) => {
     fileName: join(process.cwd(), 'logs/fastify.log'),
     genReqId: reqIdGenFactory(),
     serializers: {
-      req: asReqValue
+      req: asReqValue,
     },
     formatOpts: {
-      lowres: true
+      lowres: true,
     },
-    ...opt
-  }
+    ...opt,
+  };
 
   // 添加落库日志
-  const allStreams = [{
-    stream: new FileStream(reOpt).trans
-  }]
+  const allStreams = [
+    {
+      stream: new FileStream(reOpt).trans,
+    },
+  ];
 
   // 开发环境打印控制台日志
   if (reOpt.console) {
     allStreams.push({
-      stream: new LogStream().trans
-    })
+      stream: new LogStream().trans,
+    });
   }
 
-  reOpt.stream = multiStream(allStreams)
+  reOpt.stream = multiStream(allStreams);
 
-  return reOpt
+  return reOpt;
 };
-
