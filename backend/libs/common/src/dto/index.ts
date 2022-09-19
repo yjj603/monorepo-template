@@ -1,4 +1,4 @@
-import { ApiProperty, ApiPropertyOptional, PartialType } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import {
   IsArray,
@@ -24,7 +24,7 @@ export class PageNation {
   @ApiPropertyOptional({ description: '分组属性' })
   groupBy: string[];
 
-  @ApiPropertyOptional({ description: '分页大小' })
+  @ApiPropertyOptional({ description: '分页大小', default: 10 })
   @IsOptional()
   @Min(1)
   @Max(100)
@@ -32,7 +32,7 @@ export class PageNation {
   @Transform(({ value }) => (value ? parseInt(value) : 10))
   size: number;
 
-  @ApiPropertyOptional({ description: '分页页码' })
+  @ApiPropertyOptional({ description: '分页页码', default: 1 })
   @IsOptional()
   @IsNumber()
   @Min(1)
