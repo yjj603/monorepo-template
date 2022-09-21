@@ -1,8 +1,7 @@
-import {createVue} from '../../vue-common'
-import App from './App.vue'
-import router from './router'
+import { createVue } from "@malaka/vue-common";
+import App from "./App.vue";
+import router from "./router";
 
-import './assets/main.css'
+import "./assets/main.css";
 
-
-createVue(App,router)
+createVue(App, router);

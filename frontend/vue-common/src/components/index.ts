@@ -1,1 +1,1 @@
-export * from './test/index.vue'
+export * from './test'
