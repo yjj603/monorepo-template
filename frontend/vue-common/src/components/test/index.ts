@@ -1,2 +1,2 @@
-import Test from './index.vue'
-export const MyTest = Test
+import Test from "./index.vue";
+export const MyTest = Test;
