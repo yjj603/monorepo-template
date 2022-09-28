@@ -8,7 +8,7 @@
     "common/**/*.vue",
     "components/**/*",
     "components/**/*.vue",
-    "config/auto-import.d.ts"
+    "config/*.d.ts"
   ],
   "exclude": [
     "apps/**/src/**/__tests__/*"
