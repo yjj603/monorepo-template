@@ -1,7 +1,9 @@
 <template>auto-import:{{ count }}</template>
 
 <script setup lang="ts">
+import { isString } from "lodash-es";
 const count = ref(0);
+console.log(isString(count));
 </script>
 
 <style scoped></style>

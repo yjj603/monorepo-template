@@ -1,5 +1,3 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
 import "nprogress/nprogress.css";
 import "./css/common.css";
 import type { ComponentOptions, Plugin } from "vue";
