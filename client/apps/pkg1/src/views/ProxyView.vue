@@ -1,9 +1,9 @@
 <template>
-  <el-button @click="btnClick">测试</el-button>
+  <el-button @click="btnClick">公共方法/反代测试</el-button>
 </template>
 
 <script setup lang="ts">
-import { $http, $success } from "../../../../common/utils";
+import { $http, $success } from "$";
 
 const btnClick = async () => {
   await $http({

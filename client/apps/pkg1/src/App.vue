@@ -16,8 +16,8 @@
 
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import LayoutAside from "@/layout/LayoutAside.vue";
-import LayoutHeader from "@/layout/LayoutHeader.vue";
+import LayoutAside from "./layout/LayoutAside.vue";
+import LayoutHeader from "./layout/LayoutHeader.vue";
 </script>
 
 <style scoped></style>

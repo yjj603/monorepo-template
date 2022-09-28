@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite serve ./apps/pkg1",
+    "preview": "vite preview ./apps/pkg1/ --port 4173",
+    "build-only": "vite build ./apps/pkg1/",
     "build": "run-p type-check build-only",
-    "preview": "vite preview --port 4173",
-    "test:unit": "vitest --environment jsdom",
-    "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "test:unit": "vitest -r ./apps/pkg1 --environment jsdom",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {

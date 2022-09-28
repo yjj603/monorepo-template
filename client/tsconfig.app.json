@@ -1,8 +1,14 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts",
+  "include": [
+    "env.d.ts",
     "apps/**/src/**/*",
-    "apps/**/src/**/*.vue"
+    "apps/**/src/**/*.vue",
+    "common/**/*",
+    "common/**/*.vue",
+    "components/**/*",
+    "components/**/*.vue",
+    "config/auto-import.d.ts"
   ],
   "exclude": [
     "apps/**/src/**/__tests__/*"
@@ -11,9 +17,18 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./apps/**/src/*"],
-      "~/*": ["./components/*"],
-      "$": ["./common/*"]
+      "$": [
+        "common"
+      ],
+      "$/*": [
+        "common/"
+      ],
+      "~": [
+        "components"
+      ],
+      "~/*": [
+        "components/"
+      ]
     }
   }
 }

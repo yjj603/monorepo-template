@@ -1,5 +1,5 @@
 <template>
-  <div>测试组件</div>
+  <div>公共组件测试</div>
   <MyTest></MyTest>
 </template>
 
