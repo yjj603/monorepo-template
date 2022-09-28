@@ -41,7 +41,6 @@ export default defineConfig({
     chunkSplitPlugin({
       customSplitting: {
         "vue-vendor": ["vue", "vue-router", "pinia"],
-        "element-vendor": ["element-plus"],
       },
     }),
     visualizer({

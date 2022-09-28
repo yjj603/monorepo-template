@@ -16,6 +16,3 @@ export function createVue(
   }
   app.mount("#app");
 }
-export function test2() {
-  console.log("test2");
-}

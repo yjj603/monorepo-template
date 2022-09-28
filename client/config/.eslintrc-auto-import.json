@@ -56,7 +56,6 @@
     "shallowReadonly": true,
     "shallowRef": true,
     "storeToRefs": true,
-    "test2": true,
     "toRaw": true,
     "toRef": true,
     "toRefs": true,
