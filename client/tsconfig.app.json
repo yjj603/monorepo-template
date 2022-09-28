@@ -1,14 +1,15 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": [
-    "env.d.ts",
+    "config/env.d.ts",
     "apps/**/src/**/*",
     "apps/**/src/**/*.vue",
+    "apps/**/vite.config.ts",
     "common/**/*",
     "common/**/*.vue",
     "components/**/*",
     "components/**/*.vue",
-    "config/*.d.ts"
+    "config/*"
   ],
   "exclude": [
     "apps/**/src/**/__tests__/*"
