@@ -25,7 +25,7 @@ export default defineConfig({
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
       imports: ["vue", "vue-router", "pinia"],
-      dirs: ["./apps", "./common", "./components"],
+      dirs: [path.join(cwd, "./common/utils")],
       eslintrc: {
         enabled: true,
         filepath: "./config/.eslintrc-auto-import.json",
@@ -35,6 +35,7 @@ export default defineConfig({
     }),
     Components({
       resolvers: [ElementPlusResolver()],
+      dirs: [path.join(cwd, "./components")],
       dts: path.join(cwd, "./config/components.d.ts"),
     }),
     chunkSplitPlugin({

@@ -3,8 +3,5 @@
   <MyTest></MyTest>
 </template>
 
-<script setup lang="ts">
-import { MyTest } from "~";
-</script>
-
+<script setup lang="ts"></script>
 <style scoped></style>

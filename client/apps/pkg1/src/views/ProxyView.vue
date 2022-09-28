@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { $http, $success } from "$";
-
 const btnClick = async () => {
   await $http({
     url: "/getTestName",
