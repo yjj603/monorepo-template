@@ -10,7 +10,7 @@ import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
 import { generateDocument } from './common/swagger';
 /*import { fastify } from 'fastify';
 import { FastifyLogger } from './logger';*/
-import { getPort } from '@malaka/common/utils';
+import { getBasic } from '@malaka/common/utils';
 export async function bootstrap(module: any) {
   /*  const fastifyInstance = fastify({
     logger: FastifyLogger,
@@ -47,7 +47,7 @@ export async function bootstrap(module: any) {
   generateDocument(app);
   //swagger结束
 
-  await app.listen(getPort());
+  await app.listen(getBasic('port'));
 
   if (module.hot) {
     module.hot.accept();

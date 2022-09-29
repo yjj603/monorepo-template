@@ -1,6 +1,6 @@
 PKG1:
   BASIC:
-    port: 4001
+    port: 4008
     name: 'pkg1'
   DATA_BASE:
     type: 'mysql'
@@ -12,7 +12,3 @@ PKG1:
   REDIS:
     host: '49.234.37.125'
     port: 6379
-
-
-
-
