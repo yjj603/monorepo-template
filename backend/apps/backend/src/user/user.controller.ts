@@ -10,6 +10,7 @@ import {
   UseInterceptors,
   ClassSerializerInterceptor,
   Query,
+  CacheInterceptor,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { FindUserDto, UpdateUserDto } from './dto/update-user.dto';
@@ -21,13 +22,12 @@ import {
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { Roles, RolesGuard } from '../auth/role.guard';
-import { PageNation } from '@malaka/common';
 
 @UseGuards(AuthGuard('jwt'), RolesGuard)
 @ApiTags('用户数据')
 @Controller('api/user')
 @ApiBearerAuth()
-@UseInterceptors(ClassSerializerInterceptor)
+@UseInterceptors(CacheInterceptor, ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

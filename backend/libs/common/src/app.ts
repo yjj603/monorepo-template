@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getConfig } from './utils';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as redisStore from 'cache-manager-redis-store';
 
 export const AppCommonModule = () => [
   ConfigModule.forRoot({
@@ -18,12 +19,15 @@ export const AppCommonModule = () => [
       timezone: '+08:00',
       synchronize: true,
       autoLoadEntities: true,
-      logging: ['error'],
+      logging: true,
       maxQueryExecutionTime: 1000,
     }),
   }),
   CacheModule.register({
     isGlobal: true,
+    store: redisStore,
+    host: '49.234.37.125',
+    port: 6379,
   }),
   ScheduleModule.forRoot(),
 ];

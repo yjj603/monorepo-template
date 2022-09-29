@@ -3,8 +3,8 @@ ENV:
   port: 4001
 DATA_BASE:
   type: 'mysql'
-  host: '39.105.189.94'
-  port: 3307
+  host: '49.234.37.125'
+  port: 3306
   username: 'root'
-  password: '123456'
-  database: 'r2dbc'
+  password: 'root'
+  database: 'backend'
