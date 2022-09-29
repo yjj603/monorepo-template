@@ -19,7 +19,7 @@ export const AppCommonModule = () => [
       timezone: '+08:00',
       synchronize: true,
       autoLoadEntities: true,
-      logging: true,
+      logging: ['error'],
       maxQueryExecutionTime: 1000,
     }),
   }),
