@@ -1,0 +1,1 @@
+import{i as t}from"./vendor.e799d602.js";import{v as r,r as e,S as n}from"./vue-vendor.c7a4471b.js";import"./__commonjsHelpers__.7619f2af.js";const _=r({__name:"HomeView",setup(s){const o=e(0);return console.log(t(o)),(a,i)=>"auto-import:"+n(o.value)}});export{_ as default};
