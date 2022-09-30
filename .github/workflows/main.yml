@@ -20,6 +20,10 @@ jobs:
           npm i -g pnpm
           pnpm install
           pnpm -F client run build
+      - name: check
+        run:
+          cd /client/apps/pkg1
+          ls
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
