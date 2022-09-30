@@ -18,11 +18,13 @@ jobs:
       - name: build
         run:
           npm i -g pnpm
-          pnpm -F client install
-          pnpm -F client build
-      - uses: peaceiris/actions-gh-pages@v3
+          pnpm install
+          pnpm -F client run build
+          pnpm -F backend run build
+      - name: deploy
+        uses: cross-the-world/scp-pipeline@master
         with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./client/apps/pkg1/dist
-          user_name: yjj603
-          user_email: 2670167939@qq.com@qq.com
+          host: 49.234.37.125
+          user: root
+          pass: yjj603YJJ063
+          local: ./mydata
