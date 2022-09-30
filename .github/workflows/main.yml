@@ -12,19 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
       - name: build
-        run:
-          npm i -g pnpm
-          pnpm install
+        run: |
+          pnpm -F client install
           pnpm -F client run build
       - name: deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          publish_dir: ./client/apps/pkg1/dist
-          github_token: ${{ secrets.DEPLOY_MY_WEBSITE }}
-          user_name: yjj603
-          user_email: 2670167939@qq.ocm
-          commit_message: 测试部署
+          folder: client/apps/pkg1/dist
