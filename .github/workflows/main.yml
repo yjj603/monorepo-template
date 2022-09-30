@@ -16,11 +16,9 @@ jobs:
         uses: pnpm/action-setup@v2.2.2
         with:
           version: 7
-          run_install: false
+          run_install: true
       - name: build
-        run: |
-          pnpm install
-          pnpm -F client run build
+        run: pnpm -F client run build
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
