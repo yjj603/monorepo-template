@@ -19,7 +19,7 @@ jobs:
           run_install: false
       - name: build
         run: |
-          pnpm -F client install
+          pnpm install
           pnpm -F client run build
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
