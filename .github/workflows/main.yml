@@ -17,4 +17,5 @@ jobs:
           node-version: 16
       - run:
           ls
+      - run:
           node-v
