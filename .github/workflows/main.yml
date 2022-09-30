@@ -20,11 +20,11 @@ jobs:
           npm i -g pnpm
           pnpm install
           pnpm -F client run build
-          pnpm -F backend run build
       - name: deploy
-        uses: cross-the-world/scp-pipeline@master
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          host: 49.234.37.125
-          user: root
-          pass: yjj603YJJ063
-          local: ./mydata
+          publish_dir: ./client/apps/pkg1/dist
+          github_token: ${{ secrets.DEPLOY_MY_WEBSITE }}
+          user_name: malaka
+          user_email: 2670167939@qq.ocm
+          commit_message: 测试部署
