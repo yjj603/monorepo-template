@@ -1,4 +1,4 @@
-name: Front-end
+name: monorepo-template
 on:
   push:
     branches:
@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+        run:
+          ls
+          node-v
