@@ -25,6 +25,6 @@ jobs:
         with:
           publish_dir: ./client/apps/pkg1/dist
           github_token: ${{ secrets.DEPLOY_MY_WEBSITE }}
-          user_name: malaka
+          user_name: yjj603
           user_email: 2670167939@qq.ocm
           commit_message: 测试部署
