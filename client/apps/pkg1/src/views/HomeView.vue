@@ -1,4 +1,4 @@
-<template>auto-import:{{ count }}</template>
+<template>github-pages auto-import:{{ count }}</template>
 
 <script setup lang="ts">
 import { isString } from "lodash-es";
