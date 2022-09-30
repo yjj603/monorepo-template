@@ -20,7 +20,8 @@ jobs:
       - name: build
         run: |
           pnpm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
-          pnpm install
+          pnpm -F client install
+          pnpm -F utils-common install
           pnpm -F client run build
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
