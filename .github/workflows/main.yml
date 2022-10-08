@@ -23,7 +23,3 @@ jobs:
           pnpm -F client install
           pnpm -F utils-common install
           pnpm -F client run build
-      - name: deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: client/apps/pkg1/dist

@@ -15,7 +15,12 @@ export const getName = (): string => {
 export const getConfig = () => {
   const name = getName().toUpperCase();
   const environment = getEnv();
-  const yamlPath = path.join(process.cwd(), `.config/.${environment}.yaml`);
+  const yamlPath = path.join(
+    process.cwd(),
+    environment === 'prod'
+      ? `backend/.config/.${environment}.yaml`
+      : `.config/.${environment}.yaml`,
+  );
   const file = fs.readFileSync(yamlPath, 'utf8');
   return parse(file)[name];
 };
