@@ -23,6 +23,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     AutoImport({
+      resolvers: [ElementPlusResolver()],
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
       imports: ["vue", "vue-router", "pinia"],
       dirs: [path.join(cwd, "./common/utils")],
@@ -31,7 +32,6 @@ export default defineConfig({
         filepath: "./config/.eslintrc-auto-import.json",
       },
       dts: path.join(cwd, "./config/auto-import.d.ts"),
-      resolvers: [ElementPlusResolver()],
     }),
     Components({
       resolvers: [ElementPlusResolver()],

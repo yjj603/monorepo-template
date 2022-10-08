@@ -2,7 +2,7 @@ import "nprogress/nprogress.css";
 import "../css/common.css";
 import type { ComponentOptions, Plugin } from "vue";
 import type { Router } from "vue-router";
-
+import "element-plus/es/components/message/style/css";
 export function createVue(
   App: ComponentOptions,
   router: Router,
