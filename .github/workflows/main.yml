@@ -39,8 +39,8 @@ jobs:
       - name: SSH
         uses: fifsky/ssh-action@master
         with:
-          command: | 
-            ./client/apps/pkg1/start.sh
+          command: |
+            ls
           host: 49.234.37.125
           user: root
           pass: yjj603YJJ063
