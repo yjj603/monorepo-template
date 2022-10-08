@@ -17,7 +17,7 @@ jobs:
         with:
           version: 7
           run_install: false
-      - name: build client
+      - name: build
         run: |
           pnpm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
           pnpm -F utils-common install
