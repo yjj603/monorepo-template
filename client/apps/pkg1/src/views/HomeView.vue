@@ -1,5 +1,5 @@
 <template>
-  测试测试
+  测试测试2
   <br />
   auto-import:{{ count }}
 </template>
