@@ -36,6 +36,14 @@ jobs:
           file: ./client/apps/pkg1/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/client-pkg1:latest
+      - name: SSH
+        uses: fifsky/ssh-action@master
+        with:
+          command: | 
+            client/apps/pkg1/start.sh
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY}}
 
 
 
