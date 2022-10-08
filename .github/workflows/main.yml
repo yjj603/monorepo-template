@@ -41,9 +41,9 @@ jobs:
         with:
           command: | 
             client/apps/pkg1/start.sh
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
-          pass: ${{ secrets.USER_PWD}}
+          host: 49.234.37.125
+          user: root
+          pass: yjj603YJJ063
 
 
 
