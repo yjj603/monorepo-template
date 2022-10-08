@@ -1,4 +1,8 @@
-<template>auto-import:{{ count }}</template>
+<template>
+  测试测试
+  <br />
+  auto-import:{{ count }}
+</template>
 
 <script setup lang="ts">
 import { isString } from "lodash-es";
