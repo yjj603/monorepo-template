@@ -43,7 +43,7 @@ jobs:
             client/apps/pkg1/start.sh
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
-          key: ${{ secrets.PRIVATE_KEY}}
+          pass: ${{ secrets.USER_PWD}}
 
 
 
