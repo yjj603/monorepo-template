@@ -5,4 +5,4 @@ WORKDIR /home/nest
 RUN npm install pm2 -g
 EXPOSE 4008
 ENTRYPOINT ["npm", "run"]
-CMD ["start:prod"]
+CMD ["start:prod2"]
