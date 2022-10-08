@@ -40,7 +40,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            sh start.sh
+            ls
           host: 49.234.37.125
           user: root
           pass: yjj603YJJ063
