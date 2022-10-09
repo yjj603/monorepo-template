@@ -4,10 +4,14 @@
 
 <script setup lang="ts">
 const btnClick = async () => {
-  await $http({
+  const { data } = await $http({
     url: "/getTestName",
   });
-  $success("接口成功连接");
+  if (data) {
+    $success(`当前环境是${data}`);
+  } else {
+    $success(`后台配置错误`);
+  }
 };
 </script>
 <style scoped></style>
