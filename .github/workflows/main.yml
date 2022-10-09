@@ -20,10 +20,7 @@ jobs:
       - name: build
         run: |
           pnpm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
-          pnpm -F utils-common install
-#          pnpm -F client install
           pnpm -F backend install
-#          pnpm -F client run build
           pnpm -F backend run build
       - name: login to Docker Hub
         uses: docker/login-action@v2
@@ -50,9 +47,6 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-#            docker pull yjj603/client-pkg1:latest
-#            docker rm -f client-pkg1
-#            docker run -itd -p 4001:80 --name client-pkg1 yjj603/client-pkg1
             docker pull yjj603/backend-pkg1:latest
             docker rm -f backend-pkg1
             docker run -itd -p 4008:4008 --name backend-pkg1 yjj603/backend-pkg1
