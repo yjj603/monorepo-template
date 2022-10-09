@@ -50,6 +50,6 @@ export class AppController {
   @ApiOperation({ summary: '测试获取环境变量' })
   @Get('getTestName')
   getTestName() {
-    return this.configService.get('ENV').name;
+    return this.configService.get('ENV');
   }
 }

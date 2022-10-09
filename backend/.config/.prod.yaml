@@ -1,3 +1,4 @@
+ENV: 'prod'
 PKG1:
   BASIC:
     port: 4008
