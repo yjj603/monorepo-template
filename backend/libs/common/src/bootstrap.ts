@@ -46,8 +46,7 @@ export async function bootstrap(module: any) {
   //swagger开始
   generateDocument(app);
   //swagger结束
-
-  await app.listen(getBasic('port'));
+  await app.listen(getBasic('port'), getBasic('address'));
 
   if (module.hot) {
     module.hot.accept();

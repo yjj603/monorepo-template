@@ -2,6 +2,7 @@ PKG1:
   BASIC:
     port: 4001
     name: 'pkg1'
+    address: '127.0.0.1'
   DATA_BASE:
     type: 'mysql'
     host: '49.234.37.125'
