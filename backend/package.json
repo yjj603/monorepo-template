@@ -33,7 +33,6 @@
     "@nestjs/schedule": "^2.1.0",
     "@nestjs/swagger": "^6.1.2",
     "@nestjs/typeorm": "^9.0.1",
-    "assert": "^2.0.0",
     "bcryptjs": "^2.4.3",
     "cache-manager": "^4.1.0",
     "cache-manager-redis-store": "^2.0.0",
