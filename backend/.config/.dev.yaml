@@ -1,7 +1,7 @@
 ENV: 'dev'
 PKG1:
   BASIC:
-    port: 4001
+    port: 4008
     name: 'pkg1'
     address: '127.0.0.1'
   DATA_BASE:
