@@ -17,7 +17,7 @@ jobs:
         with:
           version: 7
           run_install: false
-      - name: build
+      - name: pnpm install && pnpm build
         run: |
           pnpm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
           pnpm install
@@ -59,6 +59,7 @@ jobs:
             docker pull yjj603/backend-pkg1:latest
             docker rm -f backend-pkg1
             docker run -itd -p 4008:4008 --name backend-pkg1 yjj603/backend-pkg1
+            docker image prune -af
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
           pass: ${{ secrets.USER_PWD }}
