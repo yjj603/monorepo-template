@@ -1,7 +1,10 @@
 FROM node:16
 RUN mkdir -p /home/nest
-COPY ./backend ./library ./node_modules /home/nest/
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml /home/nest/
+COPY ./ /home/nest
+RUN cd /home/nest
+RUN rm -rf /client
+RUN rm -rf /backend/apps
+RUN rm -rf /backend/libs
 WORKDIR /home/nest/backend
 EXPOSE 4008
 ENTRYPOINT ["npm", "run"]
