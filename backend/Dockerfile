@@ -1,10 +1,8 @@
 FROM node:16
 RUN mkdir -p /home/nest
-COPY ./ /home/nest
-WORKDIR /home/nest
-RUN rm -rf /client
-RUN rm -rf /backend/apps
-RUN rm -rf /backend/libs
+COPY ./backend /home/nest
+COPY ./library /home/nest
+COPY ./node_modules /home/nest
 WORKDIR /home/nest/backend
 EXPOSE 4008
 ENTRYPOINT ["npm", "run"]
