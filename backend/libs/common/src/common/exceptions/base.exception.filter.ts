@@ -14,7 +14,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<FastifyReply>();
     const request = ctx.getRequest<FastifyRequest>();
-
     request.log.error(exception.message);
     response.status(HttpStatus.SERVICE_UNAVAILABLE).send({
       status: HttpStatus.SERVICE_UNAVAILABLE,

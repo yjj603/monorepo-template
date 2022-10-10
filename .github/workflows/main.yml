@@ -39,6 +39,7 @@ jobs:
       - name: clear client
         run: | 
           rm -rf client
+          rm -rf library
           rm -rf backend/apps
           rm -rf backend/libs
       - name: Build and push backend
