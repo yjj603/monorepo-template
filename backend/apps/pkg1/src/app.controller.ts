@@ -18,7 +18,6 @@ import {
 } from './user/dto/create-user.dto';
 import { UserService } from './user/user.service';
 import { ConfigService } from '@nestjs/config';
-import { timestamp } from '@malaka/utils-common';
 
 @Controller('/api')
 @UseInterceptors(ClassSerializerInterceptor)
