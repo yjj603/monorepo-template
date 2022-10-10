@@ -8,14 +8,9 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
 import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
 import { generateDocument } from './common/swagger';
-/*import { fastify } from 'fastify';
-import { FastifyLogger } from './logger';*/
 import { getAddress, getBasic } from '@malaka/common/utils';
+
 export async function bootstrap(module: any) {
-  /*  const fastifyInstance = fastify({
-    logger: FastifyLogger,
-  })
-  console.log(fastifyInstance);*/
   const app = await NestFactory.create<NestFastifyApplication>(
     module,
     new FastifyAdapter({
@@ -48,6 +43,7 @@ export async function bootstrap(module: any) {
   //swagger结束
   // cors
   app.enableCors();
+  //cors结束
   await app.listen(getBasic('port'), getAddress());
 
   if (module.hot) {
