@@ -20,7 +20,7 @@ jobs:
       - name: pnpm install && pnpm build
         run: |
           pnpm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
-          pnpm install -P
+          pnpm install
           pnpm -F client run build
           pnpm -F backend run build
       - name: login to Docker Hub
