@@ -11,6 +11,14 @@ export const getName = (): string => {
   return process.env.NAME;
 };
 
+export const getAddress = (): string => {
+  const map = {
+    dev: '127.0.0.1',
+    prod: '0.0.0.0',
+  };
+  return map[getEnv()];
+};
+
 // 读取项目配置
 export const getConfig = () => {
   const name = getName().toUpperCase();

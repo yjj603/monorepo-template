@@ -4,7 +4,7 @@ import { ElMessage } from "element-plus";
 import type { AxiosRequestConfig } from "axios";
 
 const service = axios.create({
-  baseURL: "/api",
+  baseURL: "http://localhost:4008/api",
   timeout: 30000,
 });
 service.interceptors.request.use(

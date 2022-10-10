@@ -10,7 +10,7 @@ const btnClick = async () => {
   if (data) {
     $success(`当前环境是${data}`);
   } else {
-    $success(`后台配置错误`);
+    $error(`后台配置错误`);
   }
 };
 </script>

@@ -12,9 +12,6 @@ export default mergeConfig(
     },
     server: {
       port: 4001,
-      proxy: {
-        "/api": "http://localhost:4008",
-      },
     },
   }),
   viteConfigCommon

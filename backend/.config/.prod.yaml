@@ -1,9 +1,7 @@
-ENV: 'prod'
 PKG1:
   BASIC:
     port: 4008
     name: 'pkg1'
-    address: '0.0.0.0'
   DATA_BASE:
     type: 'mysql'
     host: '49.234.37.125'
