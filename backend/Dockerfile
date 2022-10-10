@@ -1,3 +1,4 @@
+MAINTAINER '2670167939@qq.com'
 FROM node:16-alpine
 RUN mkdir -p /home/nest
 COPY ./ /home/nest/
