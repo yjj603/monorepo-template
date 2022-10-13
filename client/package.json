@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@malaka/utils-common": "workspace:^1.0.0",
-    "axios": "^0.27.2",
+    "axios": "^1.1.2",
     "element-plus": "^2.2.17",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
@@ -24,7 +24,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/jsdom": "^20.0.0",
     "@types/lodash-es": "^4.17.6",
-    "@types/node": "^16.11.64",
+    "@types/node": "^18.8.5",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
@@ -37,16 +37,16 @@
     "eslint-plugin-vue": "^9.6.0",
     "jsdom": "^20.0.1",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.17",
+    "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "rollup-plugin-visualizer": "^5.8.2",
     "tailwindcss": "^3.1.8",
-    "typescript": "~4.7.4",
+    "typescript": "^4.8.4",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.8",
-    "vite": "^3.1.6",
+    "vite": "^3.1.7",
     "vite-plugin-chunk-split": "^0.4.1",
-    "vitest": "^0.23.4",
-    "vue-tsc": "^0.40.13"
+    "vitest": "^0.24.1",
+    "vue-tsc": "^1.0.7"
   }
 }

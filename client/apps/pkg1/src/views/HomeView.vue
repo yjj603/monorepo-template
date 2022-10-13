@@ -1,13 +1,14 @@
 <template>
-  测试测试2
+  测试测试2 {{ obj.c }}
   <br />
   auto-import:{{ count }}
 </template>
 
 <script setup lang="ts">
-import { isString } from "lodash-es";
+const obj: Record<string, unknown> = {
+  c: "test",
+};
 const count = ref(0);
-console.log(isString(count));
 </script>
 
 <style scoped></style>
