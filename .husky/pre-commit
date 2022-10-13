@@ -2,4 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 pnpm -F client run lint
+pnpm -F backend run format
 pnpm -F backend run lint
