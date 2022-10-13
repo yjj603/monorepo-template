@@ -3,8 +3,9 @@ import NProgress from "nprogress";
 import { ElMessage } from "element-plus";
 import type { AxiosRequestConfig } from "axios";
 
+console.log(import.meta.env);
 const service = axios.create({
-  baseURL: "http://localhost:4008/api",
+  baseURL: import.meta.env.VITE_API_BASE + "api",
   timeout: 30000,
 });
 service.interceptors.request.use(
