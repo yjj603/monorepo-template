@@ -6,7 +6,6 @@ export const generateDocument = (app: NestFastifyApplication) => {
   const options = new DocumentBuilder()
     .setTitle(getBasic('name'))
     .addBearerAuth()
-    .addServer('/api')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

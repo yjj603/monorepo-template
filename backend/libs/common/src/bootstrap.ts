@@ -21,6 +21,10 @@ export async function bootstrap(module: any) {
     },
   );
 
+  //全局api前缀
+  app.setGlobalPrefix('api');
+  //全局api结束
+
   // 全局字段校验开始 启动全局字段校验，保证请求接口字段校验正确。
   app.useGlobalPipes(
     new ValidationPipe({
@@ -44,9 +48,7 @@ export async function bootstrap(module: any) {
   // cors
   app.enableCors();
   //cors结束
-  //全局api前缀
-  app.setGlobalPrefix('api');
-  //全局api结束
+
   await app.listen(getBasic('port'), getAddress());
 
   if (module.hot) {
