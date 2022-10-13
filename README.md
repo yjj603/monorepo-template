@@ -10,3 +10,4 @@
 # ci/cd
  - github action
  - docker
+ - husky/lint-staged
