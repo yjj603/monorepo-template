@@ -13,5 +13,14 @@
   },
   "scripts": {
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    "backend/**/*": [
+      "pnpm -F backend run format",
+      "pnpm -F backend run lint"
+    ],
+    "client/**/*": [
+      "pnpm -F client run lint"
+    ]
   }
 }
