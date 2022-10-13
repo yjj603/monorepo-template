@@ -9,5 +9,5 @@
  - typeorm
 # ci/cd
  - GitHub action
- - docker
+ - docker,docker-compose
  - husky/lint-staged
