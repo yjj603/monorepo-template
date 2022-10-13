@@ -19,7 +19,7 @@ import {
 import { UserService } from './user/user.service';
 import { ConfigService } from '@nestjs/config';
 
-@Controller('/api')
+@Controller('/')
 @UseInterceptors(ClassSerializerInterceptor)
 export class AppController {
   constructor(

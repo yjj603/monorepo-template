@@ -44,6 +44,9 @@ export async function bootstrap(module: any) {
   // cors
   app.enableCors();
   //cors结束
+  //全局api前缀
+  app.setGlobalPrefix('api');
+  //全局api结束
   await app.listen(getBasic('port'), getAddress());
 
   if (module.hot) {

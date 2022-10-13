@@ -25,7 +25,7 @@ import { Roles, RolesGuard } from '../auth/role.guard';
 
 @UseGuards(AuthGuard('jwt'), RolesGuard)
 @ApiTags('用户数据')
-@Controller('api/user')
+@Controller('/user')
 @ApiBearerAuth()
 @UseInterceptors(CacheInterceptor, ClassSerializerInterceptor)
 export class UserController {

@@ -1,11 +1,12 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-// import * as packageConfig from '';
-export const generateDocument = (app: any) => {
+import { NestFastifyApplication } from '@nestjs/platform-fastify';
+import { getBasic } from '@malaka/common/utils';
+
+export const generateDocument = (app: NestFastifyApplication) => {
   const options = new DocumentBuilder()
-    /*   .setTitle(packageConfig.name)
-    .setDescription(packageConfig.description)
-    .setVersion(packageConfig.version)*/
+    .setTitle(getBasic('name'))
     .addBearerAuth()
+    .addServer('/api')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

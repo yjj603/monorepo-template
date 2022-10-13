@@ -8,6 +8,6 @@
  - nest
  - typeorm
 # ci/cd
- - github action
+ - GitHub action
  - docker
  - husky/lint-staged
