@@ -15,11 +15,11 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "backend/**/*": [
+    "backend/**/*.{js,ts}": [
       "pnpm -F backend run format",
       "pnpm -F backend run lint"
     ],
-    "client/**/*": [
+    "client/**/*.{ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts}": [
       "pnpm -F client run lint"
     ]
   }
