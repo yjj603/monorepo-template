@@ -8,7 +8,8 @@
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3"
   },
   "scripts": {
     "prepare": "husky install"
