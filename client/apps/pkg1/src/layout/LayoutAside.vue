@@ -4,10 +4,10 @@
       <span>首页</span>
     </el-menu-item>
     <el-menu-item index="proxy">
-      <span>代理</span>
+      <span>登录注册</span>
     </el-menu-item>
     <el-menu-item index="test">
-      <span>测试</span>
+      <span>账户列表</span>
     </el-menu-item>
   </el-menu>
 </template>
