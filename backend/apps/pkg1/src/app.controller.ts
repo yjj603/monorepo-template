@@ -28,12 +28,17 @@ export class AppController {
     private readonly configService: ConfigService,
   ) {}
 
-  @ApiOperation({ summary: '添加权限' })
+  @ApiOperation({ summary: '添加角色' })
   @Post('role')
   async createRole(@Body() req: CreateRoleDto) {
     return this.userService.createRole(req);
   }
 
+  @ApiOperation({ summary: '获取所有角色' })
+  @Get('role')
+  async getRole() {
+    return this.userService.findAllRole();
+  }
   @ApiOperation({ summary: '注册用户' })
   @Post('register')
   async register(@Body() req: CreateUserDto<string>) {

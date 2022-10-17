@@ -26,7 +26,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
       imports: ["vue", "vue-router", "pinia"],
-      dirs: [path.join(cwd, "./common/utils")],
+      dirs: [path.join(cwd, "./common/utils"), path.join(cwd, "./api")],
       eslintrc: {
         enabled: true,
         filepath: "./config/.eslintrc-auto-import.json",

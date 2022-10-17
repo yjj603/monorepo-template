@@ -21,7 +21,9 @@ export class UserDao {
       id: In(ids),
     });
   }
-
+  async findAllRole() {
+    return this.roleRepository.find();
+  }
   async create(createUserDto: CreateUserDto<Role>) {
     const create = this.userRepository.create(createUserDto);
     return this.userRepository.save(create);

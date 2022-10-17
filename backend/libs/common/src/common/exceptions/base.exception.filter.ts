@@ -17,7 +17,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     request.log.error(exception.message);
     response.status(HttpStatus.SERVICE_UNAVAILABLE).send({
       status: HttpStatus.SERVICE_UNAVAILABLE,
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toLocaleString(),
       path: request.url,
       response: new ServiceUnavailableException().getResponse(),
     });

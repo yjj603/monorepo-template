@@ -1,9 +1,8 @@
 import axios from "axios";
 import NProgress from "nprogress";
 import { ElMessage } from "element-plus";
-import type { AxiosRequestConfig } from "axios";
+import type { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 
-console.log(import.meta.env);
 const service = axios.create({
   baseURL: import.meta.env.VITE_API_BASE + "api",
   timeout: 30000,
@@ -16,11 +15,18 @@ service.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 service.interceptors.response.use(
-  (response) => {
+  (response: AxiosResponse) => {
     //响应拦截
     return response.data;
   },
-  (error) => {
+  (error: AxiosError) => {
+    const {
+      data: {
+        response: { message },
+      },
+      status,
+    } = error.response as any;
+    const msg = Array.isArray(message) ? message.join(",") : message;
     const errorStatus = {
       400: "错误的请求",
       401: "未授权，请重新登录",
@@ -35,10 +41,10 @@ service.interceptors.response.use(
       504: "网络超时",
       505: "http版本不支持该请求",
     };
-    const message: string =
-      Reflect.get(errorStatus, error.response.status) ||
-      `出错了(${error.response.status})`;
-    ElMessage.error(message);
+    const statusMessage = `${
+      Reflect.get(errorStatus, status) ?? "出错了"
+    }: ${msg}`;
+    ElMessage.error(statusMessage);
     return Promise.reject(error.response);
   }
 );

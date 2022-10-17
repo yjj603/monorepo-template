@@ -32,7 +32,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @ApiOperation({ summary: '查询所有数据' })
-  @Get('findALl')
+  @Get('findAll')
   @ApiResponse({ type: UpdateUserDto })
   // @Version('1')
   findAll(@Query() findUserDto: FindUserDto) {
