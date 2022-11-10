@@ -18,3 +18,7 @@
 - docker inspect
 - docker rm -f
 - docker image prune -af
+# mysql
+- docker run -id --name=mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+- docker exec -it mysql /bin/bash
+- mysql -uroot -proot --default-character-set=utf8
