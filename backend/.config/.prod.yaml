@@ -7,7 +7,7 @@ PKG1:
     host: '49.234.37.125'
     port: 3306
     username: 'root'
-    password: 'root'
+    password: '123456'
     database: 'backend'
   REDIS:
     host: '49.234.37.125'
