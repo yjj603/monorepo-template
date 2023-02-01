@@ -55,6 +55,7 @@ importers:
       passport-jwt: ^4.0.1
       passport-local: ^1.0.0
       prettier: ^2.8.3
+      redis: ^3.1.2
       reflect-metadata: ^0.1.13
       rimraf: ^4.1.2
       run-script-webpack-plugin: ^0.1.1
@@ -94,10 +95,11 @@ importers:
       passport: 0.6.0
       passport-jwt: 4.0.1
       passport-local: 1.0.0
+      redis: 3.1.2
       reflect-metadata: 0.1.13
       rimraf: 4.1.2
       rxjs: 7.8.0
-      typeorm: 0.3.11_wbpsjvld6yfbj4g3lqlhbqygaq
+      typeorm: 0.3.11_auw4tpmbyhr3dbozsto23naz2u
       yaml: 2.2.1
     devDependencies:
       '@fastify/static': 6.8.0
@@ -1644,7 +1646,7 @@ packages:
       '@nestjs/core': 9.2.1_e6la6qvsclaae2becwjnmfvsuq
       reflect-metadata: 0.1.13
       rxjs: 7.8.0
-      typeorm: 0.3.11_wbpsjvld6yfbj4g3lqlhbqygaq
+      typeorm: 0.3.11_auw4tpmbyhr3dbozsto23naz2u
       uuid: 8.3.2
     dev: false
 
@@ -3667,6 +3669,11 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+
+  /denque/1.5.1:
+    resolution: {integrity: sha512-XwE+iZ4D6ZUB7mfYRMb5wByE8L74HCn30FBN7sWnXksWc1LO1bPDl67pBR9o/kC4z/xSNAwkMYcGgqDV3BE3Hw==}
+    engines: {node: '>=0.10'}
+    dev: false
 
   /denque/2.1.0:
     resolution: {integrity: sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw==}
@@ -7193,6 +7200,32 @@ packages:
       resolve: 1.22.1
     dev: true
 
+  /redis-commands/1.7.0:
+    resolution: {integrity: sha512-nJWqw3bTFy21hX/CPKHth6sfhZbdiHP6bTawSgQBlKOVRG7EZkfHbbHwQJnrE4vsQf0CMNE+3gJ4Fmm16vdVlQ==}
+    dev: false
+
+  /redis-errors/1.2.0:
+    resolution: {integrity: sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w==}
+    engines: {node: '>=4'}
+    dev: false
+
+  /redis-parser/3.0.0:
+    resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
+    engines: {node: '>=4'}
+    dependencies:
+      redis-errors: 1.2.0
+    dev: false
+
+  /redis/3.1.2:
+    resolution: {integrity: sha512-grn5KoZLr/qrRQVwoSkmzdbw6pwF+/rwODtrOr6vuBRiR/f3rjSTGupbF90Zpqm2oenix8Do6RV7pYEkGwlKkw==}
+    engines: {node: '>=10'}
+    dependencies:
+      denque: 1.5.1
+      redis-commands: 1.7.0
+      redis-errors: 1.2.0
+      redis-parser: 3.0.0
+    dev: false
+
   /redis/4.6.4:
     resolution: {integrity: sha512-wi2tgDdQ+Q8q+PR5FLRx4QvDiWaA+PoJbrzsyFqlClN5R4LplHqN3scs/aGjE//mbz++W19SgxiEnQ27jnCRaA==}
     dependencies:
@@ -8220,7 +8253,7 @@ packages:
   /typedarray/0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm/0.3.11_wbpsjvld6yfbj4g3lqlhbqygaq:
+  /typeorm/0.3.11_auw4tpmbyhr3dbozsto23naz2u:
     resolution: {integrity: sha512-pzdOyWbVuz/z8Ww6gqvBW4nylsM0KLdUCDExr2gR20/x1khGSVxQkjNV/3YqliG90jrWzrknYbYscpk8yxFJVg==}
     engines: {node: '>= 12.9.0'}
     hasBin: true
@@ -8290,6 +8323,7 @@ packages:
       js-yaml: 4.1.0
       mkdirp: 1.0.4
       mysql2: 3.1.0
+      redis: 3.1.2
       reflect-metadata: 0.1.13
       sha.js: 2.4.11
       ts-node: 10.9.1_bdgp3l2zgaopogaavxusmetvge

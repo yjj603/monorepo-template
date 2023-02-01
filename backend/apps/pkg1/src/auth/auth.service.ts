@@ -23,7 +23,7 @@ export class AuthService {
       token: this.jwtService.sign(payload),
       user,
     };
-    await this.cacheManager.set(user.id, user, { ttl: 86400 });
+    await this.cacheManager.set(user.id, user, 86400);
     return res;
   }
 }

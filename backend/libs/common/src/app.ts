@@ -4,6 +4,7 @@ import { getConfig } from './utils';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as redisStore from 'cache-manager-redis-store';
+import type { ClientOpts } from 'redis';
 
 export const AppCommonModule = () => [
   ConfigModule.forRoot({
@@ -23,7 +24,7 @@ export const AppCommonModule = () => [
       maxQueryExecutionTime: 1000,
     }),
   }),
-  CacheModule.register({
+  CacheModule.register<ClientOpts>({
     isGlobal: true,
     store: redisStore,
     host: '49.234.37.125',
