@@ -52,6 +52,6 @@ export default defineConfig({
       open: false,
       emitFile: false,
     }),
-    compression(),
+    // compression(),
   ],
 });
