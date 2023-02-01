@@ -8,7 +8,7 @@ const service = axios.create({
   timeout: 30000,
 });
 service.interceptors.request.use(
-  (config): AxiosRequestConfig => {
+  (config) => {
     // token处理
     return config;
   },

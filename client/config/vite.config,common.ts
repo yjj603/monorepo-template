@@ -7,11 +7,12 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import * as path from "path";
 import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 import { visualizer } from "rollup-plugin-visualizer";
-
+import { compression } from "vite-plugin-compression2";
 const cwd = process.cwd();
 export default defineConfig({
   build: {
-    target: ["esnext"],
+    target: "esnext",
+    reportCompressedSize: false,
   },
   resolve: {
     alias: {
@@ -19,6 +20,10 @@ export default defineConfig({
       $: path.join(cwd, "./common"),
     },
   },
+  server: {
+    open: true,
+  },
+  cacheDir: "node_modules/.vite",
   plugins: [
     vue(),
     vueJsx(),
@@ -47,5 +52,6 @@ export default defineConfig({
       open: false,
       emitFile: false,
     }),
+    compression(),
   ],
 });

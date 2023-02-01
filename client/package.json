@@ -2,10 +2,10 @@
   "name": "client",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite serve ./apps/pkg1",
+    "client-dev": "vite serve ./apps/pkg1",
     "preview": "vite preview ./apps/pkg1/ --port 4173",
-    "build-only": "vite build ./apps/pkg1/",
-    "build": "run-p type-check build-only",
+    "client-build-only": "vite build ./apps/pkg1/",
+    "client-build": "run-p type-check client-build-only",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "test:unit": "vitest -r ./apps/pkg1 --environment jsdom",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
@@ -47,6 +47,7 @@
     "vite": "^4.0.4",
     "vite-plugin-chunk-split": "^0.4.7",
     "vitest": "^0.28.3",
-    "vue-tsc": "^1.0.24"
+    "vue-tsc": "^1.0.24",
+    "vite-plugin-compression2": "^0.6.0"
   }
 }

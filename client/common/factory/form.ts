@@ -47,7 +47,7 @@ class Field extends Base {
 
   addRules(value: FormRules) {
     if (this.has("rules")) {
-      this.get("rules").push(value);
+      (this.get("rules") as unknown[]).push(value);
     } else {
       this.set("rules", [value]);
     }

@@ -7,7 +7,10 @@ export class Base {
       return Reflect.get(this, key);
     }
     const str = key.split(/\./);
-    const fn = (str: string[], obj = this): unknown => {
+    const fn = (
+      str: string[],
+      obj: Record<string, unknown> | Base = this
+    ): unknown => {
       if (str.length === 1) {
         return Reflect.get(obj, str[0]);
       } else {
@@ -29,7 +32,10 @@ export class Base {
       return this;
     }
     const str = key.split(/\./);
-    const fn = (str: string[], obj = this): void => {
+    const fn = (
+      str: string[],
+      obj: Record<string, unknown> | Base = this
+    ): void => {
       if (str.length === 1) {
         Reflect.set(obj, str[0], value);
       } else {
@@ -51,7 +57,10 @@ export class Base {
       return this.set(key, value);
     }
     const str = key.split(/\./);
-    const fn = (str: string[], obj = this): void => {
+    const fn = (
+      str: string[],
+      obj: Record<string, unknown> | Base = this
+    ): void => {
       if (str.length === 1) {
         const origin = Reflect.get(obj, str[0]);
         if (isPlainObject(origin) && isPlainObject(value)) {
@@ -79,7 +88,10 @@ export class Base {
       return this;
     }
     const str = key.split(/\./);
-    const fn = (st: string[], obj = this): void => {
+    const fn = (
+      st: string[],
+      obj: Record<string, unknown> | Base = this
+    ): void => {
       if (str.length === 1) {
         Reflect.deleteProperty(obj, str[0]);
       } else {

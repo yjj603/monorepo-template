@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "rimraf dist && nest build --webpack",
+    "backend-build": "rimraf dist && nest build --webpack",
     "pkg1-start:dev": "cross-env ENV=dev NAME=pkg1 nest build --webpack --webpackPath webpack-hmr.config.js --watch",
     "pkg1-start:debug": "cross-env ENV=dev NAME=pkg1 nest start --debug --watch",
     "start:prod": "node dist/apps/pkg1/main.js",
