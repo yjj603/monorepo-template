@@ -22,3 +22,4 @@
 - docker run -id --name=mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7
 - docker exec -it mysql /bin/bash
 - mysql -uroot -proot --default-character-set=utf8
+- docker run --name mysql --restart=always -e MYSQL_ROOT_PASSWORD=123456 -d -p 3306:3306 mysql:tag 
