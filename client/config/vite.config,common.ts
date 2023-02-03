@@ -7,7 +7,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import * as path from "path";
 import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 import { visualizer } from "rollup-plugin-visualizer";
-import { compression } from "vite-plugin-compression2";
+import viteCompression from "vite-plugin-compression";
 const cwd = process.cwd();
 export default defineConfig({
   build: {
@@ -52,6 +52,6 @@ export default defineConfig({
       open: false,
       emitFile: false,
     }),
-    // compression(),
+    viteCompression(),
   ],
 });
