@@ -18,6 +18,9 @@
 - docker inspect
 - docker rm -f
 - docker image prune -af
+- docker inspect nginx | grep Mounts -A 20 查看路径映射
+- docker exec -it bash
+- docker logs -f
 # mysql
 - docker run -id --name=mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7
 - docker exec -it mysql /bin/bash
